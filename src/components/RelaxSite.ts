@@ -4,6 +4,7 @@ import RelaxCentre from './RelaxCentre';
 import Card from './cards/Card';
 
 export class RelaxSite implements RelaxCentre{
+    
     private centreName: string = "";
     private zones: Array<Zone> = [ new Zone("Outside",1000,0), new Zone("Reception",100,1)];
     private cards: Array<Card>= new Array<Card>();
@@ -24,6 +25,7 @@ export class RelaxSite implements RelaxCentre{
     }
 
     findZone= (zoneName: string):Zone => this.zones.find(zone => zone.name === zoneName)!;
+
     findCard= (cardId: number):Zone => {
         const card = this.cards.find(card => card.cardId === cardId);
 
@@ -74,6 +76,7 @@ export class RelaxSite implements RelaxCentre{
           }
         return cardsString;
     }
+    
     cardsInAllZones= () : string => {
         let cardsString = "";
 
