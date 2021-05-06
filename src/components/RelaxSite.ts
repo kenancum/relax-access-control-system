@@ -52,7 +52,7 @@ export class RelaxSite implements RelaxCentre{
         if(!sourceZone.isCardInside){
             return "Card is not listed in the source zone"
         }
-
+        
         sourceZone.removeCard(card);
         destinationZone.addCard(card);
 
