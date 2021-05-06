@@ -98,5 +98,7 @@ import Card from './cards/Card';
      * Moves all cards into the outside zone
      **/
     moveAllToOutside: () => void;
+
+    exampleCentre:() => void;
   }
   
