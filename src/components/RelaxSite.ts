@@ -5,14 +5,16 @@ import Card from './cards/Card';
 
 export class RelaxSite implements RelaxCentre{
     private centreName: string = "";
-    private zones: Array<Zone> = new Array<Zone>();
+    private zones: Array<Zone> = [ new Zone("Outside",1000,0), new Zone("Reception",100,1)];
     private cards: Array<Card>= new Array<Card>();
-    private doors: Array<Door>= new Array<Door>();
+    private doors: Array<Door>= [ new Door(0,this.zones[0],this.zones[1]),  new Door(1,this.zones[1],this.zones[0])];
 
     getCentreName = (): string=> this.centreName;
+
     addZone = (zone: Zone): void => {
         this.zones.push(zone);
     }
+
     addCard= (card: Card): void =>{
         this.cards.push(card);
     }
@@ -95,5 +97,28 @@ export class RelaxSite implements RelaxCentre{
           }
     }
     
+    exampleCentre=(): void =>{
+        const templateZones = [
+            new Zone("Pool", 3,10),
+            new Zone("Sauna", 5,2),
+            new Zone("Sun Bed", 1,1)
+        ];
+
+        const templateDoors = [
+            new Door(2,this.findZone("Reception"),this.findZone("Pool")),
+            new Door(3,this.findZone("Pool"),this.findZone("Reception")),
+            new Door(4,this.findZone("Sauna"),this.findZone("Reception")),
+            new Door(5,this.findZone("Reception"),this.findZone("Sun Bed")),
+            new Door(6,this.findZone("Sun Bed"),this.findZone("Reception")),
+            new Door(7,this.findZone("Pool"),this.findZone("Sauna"))
+        ];
+
+        for(let zone of templateZones){
+            this.addZone(zone);
+        }
+        for(let door of templateDoors){
+            this.addDoor(door);
+        }
+    }
 
 }
