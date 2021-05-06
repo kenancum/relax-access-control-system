@@ -4,29 +4,29 @@ import RelaxCentre from './RelaxCentre';
 import Card from './cards/Card';
 
 export class RelaxSite implements RelaxCentre{
-    
+
     private centreName: string = "";
     private zones: Array<Zone> = [ new Zone("Outside",1000,0), new Zone("Reception",100,1)];
     private cards: Array<Card>= new Array<Card>();
     private doors: Array<Door>= [ new Door(0,this.zones[0],this.zones[1]),  new Door(1,this.zones[1],this.zones[0])];
 
-    getCentreName = (): string=> this.centreName;
+    getCentreName = (): string => this.centreName;
 
     addZone = (zone: Zone): void => {
         this.zones.push(zone);
     }
 
-    addCard= (card: Card): void =>{
+    addCard = (card: Card): void =>{
         this.cards.push(card);
     }
 
-    addDoor= (door:Door): void =>{
+    addDoor = (door:Door): void =>{
         this.doors.push(door);
     }
 
-    findZone= (zoneName: string):Zone => this.zones.find(zone => zone.name === zoneName)!;
+    findZone = (zoneName: string): Zone => this.zones.find(zone => zone.name === zoneName)!;
 
-    findCard= (cardId: number):Zone => {
+    findCard = (cardId: number): Zone => {
         const card = this.cards.find(card => card.cardId === cardId);
 
         for (let item of this.zones) {
@@ -68,7 +68,7 @@ export class RelaxSite implements RelaxCentre{
         return false;
     };
 
-    cardsInZone= (zone: Zone): string => {
+    cardsInZone = (zone: Zone): string => {
         let cardsString = "";
 
         for (let card of zone.cards) {
@@ -77,7 +77,7 @@ export class RelaxSite implements RelaxCentre{
         return cardsString;
     }
     
-    cardsInAllZones= () : string => {
+    cardsInAllZones = (): string => {
         let cardsString = "";
 
         for (let zone of this.zones) {
@@ -88,11 +88,11 @@ export class RelaxSite implements RelaxCentre{
         return cardsString;
     }
 
-    moveToOutside= (card: Card): void => {
+    moveToOutside = (card: Card): void => {
         this.move(card,1);
     }
 
-    moveAllToOutside= (): void => {
+    moveAllToOutside = (): void => {
         for (let zone of this.zones) {
             for(let card of zone.cards){
                 this.moveToOutside(card);
@@ -100,7 +100,7 @@ export class RelaxSite implements RelaxCentre{
           }
     }
     
-    exampleCentre=(): void =>{
+    exampleCentre = (): void => {
         const templateZones = [
             new Zone("Pool", 3,10),
             new Zone("Sauna", 5,2),
