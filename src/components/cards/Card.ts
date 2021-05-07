@@ -44,7 +44,11 @@
     this._rating = rating;
   };
 
+  /**
+     * @return {boolean} true if a card has enough credits
+     */  
   abstract hasEnoughCredits() : boolean;
+
   abstract useZone(): void;
 
   /**

@@ -10,14 +10,17 @@ export class RelaxSite implements RelaxCentre{
     private cards: Array<Card> = new Array<Card>();
     private doors: Array<Door> = new Array<Door>();
 
-    constructor(){
+    constructor(centreName :string)
+    {
+        this.centreName = centreName;
         this.addZone(new Zone("Outside",1000,0));
         this.addZone(new Zone("Reception",100,1));
         this.addDoor(new Door(0,this.findZone("Outside"),this.findZone("Reception")));
         this.addDoor(new Door(0,this.findZone("Reception"),this.findZone("Outside")));
     }
-    getCentreName = (): string => this.centreName;
 
+    getCentreName = (): string => this.centreName;
+    
     addZone = (zone: Zone): void => {        
         this.zones.push(zone);
     }

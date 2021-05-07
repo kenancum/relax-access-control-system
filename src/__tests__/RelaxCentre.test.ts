@@ -3,7 +3,7 @@ import  RelaxCentre  from '../components/RelaxCentre';
 import { RelaxSite } from '../components/RelaxSite';
 
 
-const relaxSite = new RelaxSite();
+const relaxSite = new RelaxSite("Poznan");
 
 test('find zone', () => {        
     expect(relaxSite.findZone("Outside").name).toBe("Outside");

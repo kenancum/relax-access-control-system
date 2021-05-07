@@ -10,11 +10,12 @@ export default class MemberCard extends Card {
         super(memberName,rating,credits,centre);
         this._cardId = MemberCard.currentId++;
       }
+      
     /**
      * decrements the credits to show that a zone has been use
      */
      public useZone = (): void => {
-      this._credits -= 4;
+        this._credits -= 4;
     };
   
     /**

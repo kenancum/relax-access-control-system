@@ -16,10 +16,14 @@ export default class StaffCard extends Card {
         this._employeeNumber=employeeNumber;
         this._fitnessScore=fitnessScore;
     }
+
+    /**
+     * @param {number} _fitnessScore the credits to show that a zone has been use
+     */
     public useZone = (): void => {
         this._fitnessScore+=1;
     };
-  
+    
     hasEnoughCredits(): boolean {
       return true;
     }

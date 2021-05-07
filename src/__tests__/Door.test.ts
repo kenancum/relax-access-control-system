@@ -3,7 +3,7 @@ import { RelaxSite } from '../components/RelaxSite';
 import Zone from '../components/Zone';
 
 test('door creation', () => {
-    const site = new RelaxSite();
+    const site = new RelaxSite("Poznan");
     const door = new Door(0, site.findZone("Outside"), site.findZone("Reception"));
     expect(door.destinationZone.name).toBe("Reception");
     expect(door.sourceZone.name).toBe("Outside");

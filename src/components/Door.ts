@@ -17,12 +17,23 @@ import Zone from './Zone';
         this._destinationZone = _destinationZone;
     }
 
+    /**
+   * @return {number} gets door number
+   */  
     public get doorNumber(){
         return this._doorNumber;
     }
+
+    /**
+   * @return {Zone} gets which zone is the source zone
+   */    
     public get sourceZone(){
         return this._sourceZone;
     }
+
+    /**
+   * @return {Zone} gets which zone is the destination
+   */   
     public get destinationZone(){
         return this._destinationZone;
     }

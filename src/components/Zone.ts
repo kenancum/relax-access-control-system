@@ -21,16 +21,27 @@ import Card from './cards/Card';
             this._rating=_rating;
     }
     
+    /**
+    *  @param {Card} card - Card to be added
+    **/  
     public addCard = (card: Card): void => {
         this.cards.push(card);
     }
 
+    /**
+    *  @param {Card} card - Card to be removed
+    **/
     public removeCard = (card: Card): void => {
         const index = this.cards.indexOf(card);
         if (index > -1) {
             this.cards.splice(index, 1);
         }
     }
+
+    /**
+    * @param {number} getNumberOfCards 
+    * @return {this.cards.length} Spesific lengths of the cards
+    **/
     public getNumberOfCards = (): number => this.cards.length;
     
     public whoAreInside = (): void =>{
@@ -39,10 +50,29 @@ import Card from './cards/Card';
           }
     }
 
+    /**
+    * @param {boolean} isCardInside Checks if the card is inside 
+    * @return {this.cards.includes} Shows what is the card includes
+    **/
     public isCardInside = (card: Card): boolean => this.cards.includes(card);
     
+    /**
+   * @return {string} Returns the name
+   */
     public get name(){ return this._name;}   
+
+    /**
+   * @return {number} Returns the capacity
+   */  
     public get capacity(){return this._capacity;}
+
+    /**
+   * @return {number} Returns the rating
+   */  
     public get rating(){return this._rating;}
+
+    /**
+   * @return {Card} Returns the cards
+   */    
     public get cards(){return this._cards;}
 }

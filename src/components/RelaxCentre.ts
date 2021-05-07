@@ -15,8 +15,7 @@ import Card from './cards/Card';
      * @return {string} - name of the centre
      **/
     getCentreName: () => string; 
-    
-    
+        
     /**
      *  @param {Zone} zone - Zone to be added
      **/
