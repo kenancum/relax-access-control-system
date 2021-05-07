@@ -23,14 +23,15 @@ export class RelaxSite implements RelaxCentre{
     addDoor = (door:Door): void =>{
         this.doors.push(door);
     }
-
+    
     findZone = (zoneName: string): Zone => this.zones.find(zone => zone.name === zoneName)!;
 
+
     findCard = (cardId: number): Zone => {
-        const card = this.cards.find(card => card.cardId === cardId);
+        const card = this.cards.find(card => card.cardId === cardId)!;
 
         for (let item of this.zones) {
-            if(item.isCardInside(card!)){
+            if(item.isCardInside(card)){
                 return item;
             }
           }
@@ -38,10 +39,11 @@ export class RelaxSite implements RelaxCentre{
     };
     
     move = (card: Card, doorNumber: number): string => {
+        
+        const door = this.doors.find(door => door.doorNumber === doorNumber)!;
 
-        const destinationZone = this.doors[doorNumber].destinationZone;
-        const sourceZone = this.doors[doorNumber].sourceZone;
-
+        const destinationZone = door.destinationZone;
+        const sourceZone = door.sourceZone;
 
         if(destinationZone.getNumberOfCards() >= destinationZone.capacity){
             return "Destination is full!";
@@ -63,7 +65,7 @@ export class RelaxSite implements RelaxCentre{
         const destinationZone = door.destinationZone;
         const sourceZone = door.sourceZone;
 
-        if(destinationZone.getNumberOfCards() < destinationZone.capacity || card.hasEnoughCredits||sourceZone.isCardInside)
+        if(destinationZone.getNumberOfCards() < destinationZone.capacity && card.hasEnoughCredits && sourceZone.isCardInside)
             return true;
         return false;
     };
@@ -113,7 +115,7 @@ export class RelaxSite implements RelaxCentre{
             new Door(4,this.findZone("Sauna"),this.findZone("Reception")),
             new Door(5,this.findZone("Reception"),this.findZone("Sun Bed")),
             new Door(6,this.findZone("Sun Bed"),this.findZone("Reception")),
-            new Door(7,this.findZone("Pool"),this.findZone("Sauna"))
+            new Door(7,this.findZone("Pool"),this.findZone("Sauna")),
         ];
 
         for(let zone of templateZones){
