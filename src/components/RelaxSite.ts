@@ -107,8 +107,8 @@ export class RelaxSite implements RelaxCentre{
     
     exampleCentre = (): void => {
         const templateZones = [
-            new Zone("Pool", 3,10),
-            new Zone("Sauna", 5,2),
+            new Zone("Pool", 10,3),
+            new Zone("Sauna", 2,5),
             new Zone("Sun Bed", 1,1)
         ];
 

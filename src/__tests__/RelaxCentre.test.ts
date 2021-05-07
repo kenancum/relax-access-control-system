@@ -1,5 +1,7 @@
 import LoyaltyCard from '../components/cards/LoyaltyCard';
+import  RelaxCentre  from '../components/RelaxCentre';
 import { RelaxSite } from '../components/RelaxSite';
+
 
 const relaxSite = new RelaxSite();
 
@@ -18,3 +20,9 @@ test('is card initial created in reception',()=>{
 
     expect(relaxSite.findCard(cardId).name).toBe("Reception");
 });
+
+test('example relax centre', ()=>{
+    relaxSite.exampleCentre();
+    
+    expect(relaxSite.findZone("Pool").capacity).toBe(10);
+})

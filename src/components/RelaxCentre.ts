@@ -99,6 +99,9 @@ import Card from './cards/Card';
      **/
     moveAllToOutside: () => void;
 
+    /**
+     * Creates a preset centre
+     **/
     exampleCentre:() => void;
   }
   
