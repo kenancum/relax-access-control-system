@@ -24,6 +24,7 @@ export class RelaxSite implements RelaxCentre{
 
     addCard = (card: Card): void =>{
         this.cards.push(card);
+        this.findZone("Reception").addCard(card);
     }
 
     addDoor = (door:Door): void =>{
