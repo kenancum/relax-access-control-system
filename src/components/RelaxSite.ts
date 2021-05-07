@@ -6,13 +6,19 @@ import Card from './cards/Card';
 export class RelaxSite implements RelaxCentre{
 
     private centreName: string = "";
-    private zones: Array<Zone> = [ new Zone("Outside",1000,0), new Zone("Reception",100,1)];
-    private cards: Array<Card>= new Array<Card>();
-    private doors: Array<Door>= [ new Door(0,this.zones[0],this.zones[1]),  new Door(1,this.zones[1],this.zones[0])];
+    private zones: Array<Zone> = new Array<Zone>();
+    private cards: Array<Card> = new Array<Card>();
+    private doors: Array<Door> = new Array<Door>();
 
+    constructor(){
+        this.addZone(new Zone("Outside",1000,0));
+        this.addZone(new Zone("Reception",100,1));
+        this.addDoor(new Door(0,this.findZone("Outside"),this.findZone("Reception")));
+        this.addDoor(new Door(0,this.findZone("Reception"),this.findZone("Outside")));
+    }
     getCentreName = (): string => this.centreName;
 
-    addZone = (zone: Zone): void => {
+    addZone = (zone: Zone): void => {        
         this.zones.push(zone);
     }
 
@@ -23,16 +29,15 @@ export class RelaxSite implements RelaxCentre{
     addDoor = (door:Door): void =>{
         this.doors.push(door);
     }
-    
-    findZone = (zoneName: string): Zone => this.zones.find(zone => zone.name === zoneName)!;
-
+    findZone = (zoneName: string): Zone => this.zones.find(x => x.name === zoneName)!;
 
     findCard = (cardId: number): Zone => {
         const card = this.cards.find(card => card.cardId === cardId)!;
+        
 
-        for (let item of this.zones) {
-            if(item.isCardInside(card)){
-                return item;
+        for (let zone of this.zones) {
+            if(zone.isCardInside(card)){
+                return zone;
             }
           }
           return this.zones[0];
@@ -58,7 +63,7 @@ export class RelaxSite implements RelaxCentre{
         sourceZone.removeCard(card);
         destinationZone.addCard(card);
 
-        return "Successful entry";
+        return "successfull entry";
     }
 
     canMove = (card: Card, door: Door): boolean => {
@@ -79,14 +84,13 @@ export class RelaxSite implements RelaxCentre{
         return cardsString;
     }
     
+
     cardsInAllZones = (): string => {
         let cardsString = "";
 
-        for (let zone of this.zones) {
-            for(let card of zone.cards){
-                cardsString += card.toString();
-            }
-          }
+        for(let card of this.cards){
+            cardsString += card.toString();
+        }
         return cardsString;
     }
 
@@ -95,11 +99,9 @@ export class RelaxSite implements RelaxCentre{
     }
 
     moveAllToOutside = (): void => {
-        for (let zone of this.zones) {
-            for(let card of zone.cards){
-                this.moveToOutside(card);
-            }
-          }
+        for(let card of this.cards){
+            this.moveToOutside(card);
+        }
     }
     
     exampleCentre = (): void => {

@@ -8,11 +8,10 @@ export default class StaffCard extends Card {
 
     constructor(
       memberName: string,
-      rating: number,
-      credits: number,
       employeeNumber: number,
-      fitnessScore: number){
-        super(memberName,10,5);
+      fitnessScore: number,
+      centreName: string){
+        super(memberName,10,5,centreName);
         this._cardId = StaffCard.currentId++;
         this._employeeNumber=employeeNumber;
         this._fitnessScore=fitnessScore;

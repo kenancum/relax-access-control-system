@@ -1,3 +1,4 @@
+import { basename } from 'path';
 import Card from './Card';
 
 export default class LoyaltyCard extends Card {
@@ -7,21 +8,24 @@ export default class LoyaltyCard extends Card {
     constructor(
       memberName: string,
       rating: number,
-      credits: number){
-        super(memberName,rating,credits);
+      credits: number,
+      centreName: string){
+        super(memberName,rating,credits,centreName);
         this._cardId = LoyaltyCard.currentId++;
     }
+
     public addCredits = (value: number): void => {
-        this._credits += value;
+        this._credits += 30*value;
         this.loyalityPoints += 20*value;
     };
+    
     public useZone = (): void => {
       this._credits -= 3;
-      this.loyalityPoints -=2;
+      this.loyalityPoints +=2;
     };
   
     public hasEnoughCredits() : boolean{ return this._credits >= 3; } 
-    public hasEnoughLoyalityPoints = (): boolean => this._credits >= 2;
+    public hasEnoughLoyalityPoints = (): boolean => this.loyalityPoints >= 2;
   
     public convertCoins = (value: number): void =>{
       this.loyalityPoints+=value;

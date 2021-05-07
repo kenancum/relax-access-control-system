@@ -31,12 +31,11 @@ import Card from './cards/Card';
             this.cards.splice(index, 1);
         }
     }
-
     public getNumberOfCards = (): number => this.cards.length;
     
     public whoAreInside = (): void =>{
-        for (let item of this.cards) {
-            console.log(item.toString());
+        for (let card of this.cards) {
+            console.log(card.toString());
           }
     }
 
